@@ -93,12 +93,13 @@ Creates a loan request simulation
     
             X-transactionId: 123456789
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
     + Headers
 
             X-transactionId: 123456789
             X-test-mode: true
-            Location: loan_requests/{request_id}/simulations
+
+    + Attributes (array[SimulationGroup])
 
 
 ## Data Structures
@@ -110,14 +111,14 @@ Creates a loan request simulation
 
 ### Project
 
-+ loan (Loan, required)
++ personal_financing (PersonnalFinancing, required)
 
-### Loan
+### PersonnalFinancing
 + category: 50,251,252 (enum,required)
     the material code
-+ amount: 10000 (number,required)
++ amount: 3000000 (number,required)
     The amount in cts.
-+ term: 28 (number, required)
++ term: 20 (number, required)
     The loan term in month.
 + read_only: false (boolean, optional)
     Indicates if the loan object can be modifed.
@@ -134,4 +135,27 @@ Creates a loan request simulation
 ### Simulation
 
 + id: 01
-+ type: main,secondary,alternative (enum)
++ type: main,secondary,alternative,sample (enum)
+  When several simulation are present in a group, they can play different roles.
++ product_family:  CLASSICAL, REVOLVING (enum, required)
++ rating: LOW,HIGH,FIXED (enum,optional)
++ financing (Financing)
+
+
+### Financing
+
++ requested_amount: 3000000 (number,required)
++ term: 20 (number, required)
++ monthly_payment: 153516 (number,required)
++ insurance_included: false (boolean)
++ total_amount: 3070320 (number, required)
++ rate: 26600 (number, required)
++ loan_cost: 70320 (number,required)
++ fees: 0 (number)
++ interest: 70320 (number)
++ TAEG (TAEG)
+
+
+### TAEG
++ kind: fixed,variable (enum,required)
++ value: 26900 (number, required)
