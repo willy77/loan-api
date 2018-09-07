@@ -3,6 +3,8 @@
 
 Loan application is a simple API allowing consumers to subscribe a loan.
 
+![alt text](https://github.com/willy77/loan-api/blob/master/model.jpg?raw=true)
+
  - All amounts are in cts.
  - All rates are multiplied by 10000
 
