@@ -5,6 +5,8 @@ HOST: http://polls.apiblueprint.org/
 
 Loan application is a simple API allowing consumers to subscribe a loan.
 
+![alt text](https://github.com/willy77/loan-api/blob/master/model.jpg?raw=true)
+
  - All amounts are in cts.
  - All rates are multiplied by 10000
 
@@ -124,38 +126,65 @@ Creates a loan request simulation
     Indicates if the loan object can be modifed.
     
 ### CustomisationContext
-+ product_family: CLASSICAL, REVOLVING (enum, optional)
 
++ product_family: CLASSICAL, REVOLVING (enum, optional)
++ engagement: NONE, SCORED, FINAL (enum,optional)
 
 ### SimulationGroup
 
 + rank: 10 (number)
++ kind: result, sample (enum)
 + simulations (array[Simulation])
 
 ### Simulation
 
 + id: 01
-+ type: main,secondary,alternative,sample (enum)
++ type: main,secondary,alternative (enum)
   When several simulation are present in a group, they can play different roles.
-+ product_family:  CLASSICAL, REVOLVING (enum, required)
 + rating: LOW,HIGH,FIXED (enum,optional)
-+ financing (Financing)
++ proposal (enum)
+    + (ClassicalFinancing)
+    + (RevolvingFinancing)
 
-
-### Financing
-
-+ requested_amount: 3000000 (number,required)
+### ClassicalFinancing
++ type: CLASSICAL, REVOLVING (enum, required)
 + term: 20 (number, required)
++ requested_amount: 3000000 (number,required)
 + monthly_payment: 153516 (number,required)
++ rate (RATE)
++ TAEG (RATE)
 + insurance_included: false (boolean)
 + total_amount: 3070320 (number, required)
-+ rate: 26600 (number, required)
 + loan_cost: 70320 (number,required)
 + fees: 0 (number)
 + interest: 70320 (number)
-+ TAEG (TAEG)
++ insurance (Insurance)
+
+### RevolvingFinancing
++ type: CLASSICAL, REVOLVING (enum, required)
++ term: 20 (number, required)
++ maxterm: 24 (number, required)
++ requested_amount: 200000 (number,required)
++ installments (array[Installment],required)
++ rate (RATE)
++ TAEG (RATE)
++ insurance_included: false (boolean)
++ total_amount: 226940 (number, required)
++ interest: 26940 (number)
++ insurance (Insurance)
 
 
-### TAEG
+### RATE
 + kind: fixed,variable (enum,required)
 + value: 26900 (number, required)
+
+### Insurance
+
++ rating: LOW,HIGH,FIXED (enum,optional)
++ amount: 3761 (number)
++ total_amount: 75220 (number)
++ TAEA: 29100 (number)
+
+### Installment
++ number: 19 (number, required)
++ amount:  11400  (number, required)
