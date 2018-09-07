@@ -62,7 +62,7 @@ Creates a loan request
 
 ## Loan request Simulation Collection [/loan_requests/{request_id}/simulations]
 
-### create a new loan request simulations [POST]
+### Create a new loan request simulations [POST]
 
 Creates a loan request simulation
 
@@ -124,3 +124,14 @@ Creates a loan request simulation
     
 ### CustomisationContext
 + product_family: CLASSICAL, REVOLVING (enum, optional)
+
+
+### SimulationGroup
+
++ rank: 10 (number)
++ simulations (array[Simulation])
+
+### Simulation
+
++ id: 01
++ type: main,secondary,alternative (enum)
