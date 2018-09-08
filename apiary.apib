@@ -69,6 +69,21 @@ Creates a loan request
             X-transactionId: 123456789
             X-test-mode: true
             Location: loan_requests/{request_id}
+            
++ Response 500 (application/json)
+    When a server error occured.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
++ Response 400 (application/json)
+    When the request is not compliant.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
 
 ## Loan request Simulation Collection [/loan_requests/{request_id}/simulations]
 
@@ -94,6 +109,20 @@ Creates a loan request simulation
             X-test-mode: true
             Location: loan_requests/{request_id}/simulations
 
++ Response 403 (application/json)
+    When the request doesn't exists.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
++ Response 400 (application/json)
+    When the request is not compliant.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
 ### Retreive simulations result [GET]
 <a id="read_simulation_result"></a>
 
@@ -112,6 +141,21 @@ Creates a loan request simulation
             X-test-mode: true
 
     + Attributes (array[SimulationGroup])
+
++ Response 404 (application/json)
+    When there is no result.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
++ Response 403 (application/json)
+    When the simulation creation has not yet been done.
+    + Headers
+
+            X-transactionId: 123456789
+            X-test-mode: true
+
 
 
 ## Data Structures
