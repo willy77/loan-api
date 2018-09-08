@@ -117,7 +117,7 @@ Creates a loan request simulation
 ## Data Structures
 
 ### LoanRequest
-+ vendorId: 100456420125 (string, required)
++ vendorId: 1001989870P (string, required)
    Your vendor identifier.
 + project (Project,required)
 
@@ -128,7 +128,7 @@ Creates a loan request simulation
 ### PersonnalFinancing
 + category: 50,251,252 (enum,required)
     the material code
-+ amount: 3000000 (number,required)
++ amount (Amount,required)
     The amount in cts.
 + term: 20 (number, required)
     The loan term in month.
@@ -158,18 +158,18 @@ Creates a loan request simulation
 
 ### AbstractLoanProposal
 + term: 20 (number, required)
-+ requested_amount: 3000000 (number,required)
++ requested_amount  (Amount,required)
 + rate (RATE)
 + TAEG (RATE)
 + insurance_included: false (boolean)
-+ total_amount: 3070320 (number, required)
-+ interest: 26940 (number)
++ total_amount (Amount, required)
++ interest  (Amount)
 + insurance (Insurance)
-+ loan_cost: 70320 (number,required)
++ loan_cost (Amount,required)
 
 ### ClassicalFinancing (AbstractLoanProposal)
-+ monthly_payment: 153516 (number,required)
-+ fees: 0 (number)
++ monthly_payment (Amount,required)
++ fees (Amount)
 
 ### RevolvingFinancing (AbstractLoanProposal)
 + maxterm: 24 (number, required)
@@ -183,10 +183,14 @@ Creates a loan request simulation
 ### Insurance
 
 + rating: LOW,HIGH,FIXED (enum,optional)
-+ amount: 3761 (number)
-+ total_amount: 75220 (number)
-+ TAEA: 29100 (number)
++ amount (Amount)
++ total_amount (Amount)
++ TAEA (RATE)
 
 ### Installment
 + number: 19 (number, required)
-+ amount:  11400  (number, required)
++ amount (Amount, required)
+
+### Amount
++ value: 1000 (number,required)
++ currency: EUR,GBP (enum)
